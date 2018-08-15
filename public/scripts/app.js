@@ -13,6 +13,34 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
+    _createClass(IndecisionApp, [{
+        key: "componentDidMount",
+
+
+        //lifecycle methods are only for class based components
+
+        // when the component first gets mounted to DOM
+        value: function componentDidMount() {
+            console.log("COmponent did mount");
+        }
+
+        // when the component updates
+
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            console.log("COmponent did update");
+        }
+
+        // when a component goes away
+
+    }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount(prevProps, prevState) {
+            console.log("COmponent will unmount");
+        }
+    }]);
+
     function IndecisionApp(props) {
         _classCallCheck(this, IndecisionApp);
 

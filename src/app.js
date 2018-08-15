@@ -1,6 +1,24 @@
 // IndecisionApp Root component
 // 1. class based components
 class IndecisionApp extends React.Component {
+
+    //lifecycle methods are only for class based components
+
+    // when the component first gets mounted to DOM
+    componentDidMount(){
+        console.log("COmponent did mount");
+    }
+
+    // when the component updates
+    componentDidUpdate(prevProps, prevState){
+        console.log("COmponent did update");
+    }
+
+    // when a component goes away
+    componentWillUnmount(prevProps, prevState){
+        console.log("COmponent will unmount");
+    }
+
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
