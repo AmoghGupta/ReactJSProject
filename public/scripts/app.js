@@ -22,6 +22,17 @@ var IndecisionApp = function (_React$Component) {
         // when the component first gets mounted to DOM
         value: function componentDidMount() {
             console.log("COmponent did mount");
+            try {
+                var json = localStorage.getItem("options");
+                var options = JSON.parse(json);
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                }
+            } catch (e) {
+                console.log(e);
+            }
         }
 
         // when the component updates
@@ -30,6 +41,11 @@ var IndecisionApp = function (_React$Component) {
         key: "componentDidUpdate",
         value: function componentDidUpdate(prevProps, prevState) {
             console.log("COmponent did update");
+
+            if (prevState.options.length != this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem("options", json);
+            }
         }
 
         // when a component goes away
@@ -276,6 +292,11 @@ var Options = function Options(props) {
         React.createElement(
             "ul",
             null,
+            props.options.length === 0 && React.createElement(
+                "p",
+                null,
+                "Please add an option to get started!"
+            ),
             props.options.map(function (option) {
                 return React.createElement(Option, { key: option, option: option,
                     removeIndividual: props.handleIndividualDeleteOption });
@@ -384,4 +405,5 @@ var User = function User(props) {
 
 // render app
 // ReactDOM.render( <User name="Amogh" age="23"/>,document.getElementById('app'));
-ReactDOM.render(React.createElement(IndecisionApp, { options: ["hello", "world", "welcome"] }), document.getElementById('app'));
+// ReactDOM.render( <IndecisionApp options={["hello","world","welcome"]}/>,document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
