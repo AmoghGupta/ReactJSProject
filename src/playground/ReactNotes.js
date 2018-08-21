@@ -13,3 +13,9 @@
 // components have access to state when rendering
 // defined in component itself
 // can be changed by component itself
+
+
+
+//Use state to store the data your current page needs in your controller-view.
+
+//Use props to pass data & event handlers down to your child components.

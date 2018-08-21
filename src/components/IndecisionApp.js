@@ -68,8 +68,9 @@ class IndecisionApp extends React.Component {
         alert(randomOption);
     }
 
-    onFormSubmit(e){
+    onFormSubmit(e, dataReceivedFromChild){
         e.preventDefault();
+        alert(dataReceivedFromChild);
         const option = e.target.elements.option.value;
         if(option){
             this.setState((prevState)=>{

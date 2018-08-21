@@ -9,7 +9,7 @@ export default class AddOption extends React.Component {
     }
 
     onFormSubmit(e){
-        this.props.onFormSubmit(e);
+        this.props.onFormSubmit(e, "data from child");
     }
 
     //JSX
