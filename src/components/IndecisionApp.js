@@ -4,13 +4,10 @@ import Options from './Options'
 import WhatShouldIdo from'./WhatShouldIdo'
 import AddOption from './AddOption'
 
-
 // IndecisionApp Root component
 // 1. class based components
 class IndecisionApp extends React.Component {
-
     //lifecycle methods are only for class based components
-
     // when the component first gets mounted to DOM
     componentDidMount(){
         console.log("COmponent did mount");
@@ -24,7 +21,6 @@ class IndecisionApp extends React.Component {
             console.log(e);
         }
     }
-
     // when the component updates
     componentDidUpdate(prevProps, prevState){
         console.log("COmponent did update");
@@ -34,12 +30,10 @@ class IndecisionApp extends React.Component {
             localStorage.setItem("options", json);
         }
     }
-
     // when a component goes away
     componentWillUnmount(prevProps, prevState){
         console.log("COmponent will unmount");
     }
-
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
@@ -51,7 +45,6 @@ class IndecisionApp extends React.Component {
             // this will pick up defaultProps if props are not being passed
             options: props.options
         }
-       
     }
 
     handleDeleteOptions(){
@@ -95,29 +88,20 @@ class IndecisionApp extends React.Component {
     render(){
         const title = "Indecision";
         const subTitle = "Put your life in the hands of a computer";
-        // const options = [];
         return (
             <div>
-                {/* Passing prop..here we are passing a single prop to header called Title */}
                 <Header  subTitle= {subTitle}/>
                 <WhatShouldIdo hasOptions= {this.state.options.length>0?true:false} 
                 generateRandomNumber ={this.generateRandomNumber}/>
-                {/* below two using props  */}
-                {/* <Options options={options}/>
-                <AddOption options={options}/> */}
-                {/* below two using state  */}
                 <Options options={this.state.options} 
                 handleDeleteOptions={this.handleDeleteOptions}
                 handleIndividualDeleteOption={this.handleIndividualDeleteOption}/>
-                <AddOption options={this.state.options} onFormSubmit= {this.onFormSubmit} />
+                <AddOption onFormSubmit= {this.onFormSubmit} />
             </div>
         );
     }
 }
-
 IndecisionApp.defaultProps = {
     options : []
 };
-
-
 export default IndecisionApp;
