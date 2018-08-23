@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './Header'
 import Options from './Options'
-import WhatShouldIdo from'./WhatShouldIdo'
-import AddOption from './AddOption'
+import WhatShouldIdo from'./WhatShouldIdo';
+import AddOption from './AddOption';
+import OptionModal from './OptionModal';
 
 // IndecisionApp Root component
 // 1. class based components
@@ -37,13 +38,15 @@ class IndecisionApp extends React.Component {
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.closePopUp = this.closePopUp.bind(this);
         this.handleIndividualDeleteOption = this.handleIndividualDeleteOption.bind(this);
         this.generateRandomNumber = this.generateRandomNumber.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
         // creating state object in component
         this.state = {
             // this will pick up defaultProps if props are not being passed
-            options: props.options
+            options: props.options,
+            selectedOption: undefined
         }
     }
 
@@ -65,7 +68,21 @@ class IndecisionApp extends React.Component {
     generateRandomNumber(){
         let getRandomChoice = Math.floor(Math.random()*this.state.options.length);
         let randomOption = this.state.options[getRandomChoice];
-        alert(randomOption);
+        let self = this;
+        // alert(randomOption);
+        this.setState((prevState)=>{
+            return {
+                selectedOption: randomOption
+            }
+        });
+    }
+
+    closePopUp(){
+        this.setState((prevState)=>{
+            return {
+                selectedOption: undefined
+            }
+        });
     }
 
     onFormSubmit(option, dataReceivedFromChild){
@@ -100,6 +117,7 @@ class IndecisionApp extends React.Component {
                 handleDeleteOptions={this.handleDeleteOptions}
                 handleIndividualDeleteOption={this.handleIndividualDeleteOption}/>
                 <AddOption onFormSubmit= {this.onFormSubmit} />
+                <OptionModal selectedOption={this.state.selectedOption} closePopUp={this.closePopUp}/>
             </div>
         );
     }
