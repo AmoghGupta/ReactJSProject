@@ -68,11 +68,14 @@ class IndecisionApp extends React.Component {
         alert(randomOption);
     }
 
-    onFormSubmit(e, dataReceivedFromChild){
-        e.preventDefault();
+    onFormSubmit(option, dataReceivedFromChild){
         alert(dataReceivedFromChild);
-        const option = e.target.elements.option.value;
-        if(option){
+        if(!option){
+            return "enter valid value to add item";
+        }else if(this.state.options.indexOf(option) > -1){
+            return "value already exists";
+        }
+        else{
             this.setState((prevState)=>{
                 return {
                     // we cannot directly modify the options array 
@@ -81,7 +84,6 @@ class IndecisionApp extends React.Component {
                     options:prevState.options.concat([option])
                 }
             });
-            e.target.elements.option.value = '';
         }
     }
 
