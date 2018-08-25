@@ -110,13 +110,15 @@ class IndecisionApp extends React.Component {
         const subTitle = "Put your life in the hands of a computer";
         return (
             <div>
-                <Header  subTitle= {subTitle}/>
-                <WhatShouldIdo hasOptions= {this.state.options.length>0?true:false} 
-                generateRandomNumber ={this.generateRandomNumber}/>
-                <Options options={this.state.options} 
-                handleDeleteOptions={this.handleDeleteOptions}
-                handleIndividualDeleteOption={this.handleIndividualDeleteOption}/>
-                <AddOption onFormSubmit= {this.onFormSubmit} />
+                <Header title={title} subTitle= {subTitle}/>
+                <div class="container">
+                    <WhatShouldIdo hasOptions= {this.state.options.length>0?true:false} 
+                    generateRandomNumber ={this.generateRandomNumber}/>
+                    <Options options={this.state.options} 
+                    handleDeleteOptions={this.handleDeleteOptions}
+                    handleIndividualDeleteOption={this.handleIndividualDeleteOption}/>
+                    <AddOption onFormSubmit= {this.onFormSubmit} />
+                </div>
                 <OptionModal selectedOption={this.state.selectedOption} closePopUp={this.closePopUp}/>
             </div>
         );

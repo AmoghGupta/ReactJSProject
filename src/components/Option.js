@@ -19,7 +19,7 @@ import React from 'react';
 const Option = (props)=>{
     return (
         <div>
-            <li>{props.option} <button id={props.option} onClick={props.removeIndividual}>Remove</button></li> 
+            <li>{props.option} <button className="button" id={props.option} onClick={props.removeIndividual}>Remove</button></li> 
         </div>
     );
 } 

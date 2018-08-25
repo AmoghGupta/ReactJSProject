@@ -28,7 +28,7 @@ import React from 'react';
 const WhatShouldIdo = (props)=>{
     return (
         <div>
-        <button disabled={!props.hasOptions} 
+        <button className="big-button" disabled={!props.hasOptions} 
         onClick={props.generateRandomNumber}>What should I do?</button>
     </div>
     );
