@@ -1,8 +1,5 @@
-TTo run this project run:
-npm install
-
-// run webpack using 
-webpack --watch 
+To run this project run:
+npm install 
 
 // run project using 
-live-server public/
+npm run dev-server
